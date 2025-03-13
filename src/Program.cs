@@ -15,13 +15,11 @@ namespace Ecommerce
             Order order = new Order();
             PaymentService payment = new PaymentService();
 
-            Console.WriteLine("\n\n     --------------------------------------------------------------------------------");
+            Console.WriteLine("\n");
+            Console.WriteLine("     --------------------------------------------------------------------------------");
             Console.WriteLine("                            S I S T E M A   E C O M M E R C E");
-            Console.WriteLine("     --------------------------------------------------------------------------------\n");
-
-            Console.WriteLine("     >> Carregando lista de produtos...");
-            products.ShowProducts();
-
+            Console.WriteLine("     --------------------------------------------------------------------------------");
+            Console.WriteLine("");
 
             while (true)
             {
@@ -43,8 +41,9 @@ namespace Ecommerce
                         break;
 
                     case "N":
-                        Console.WriteLine("\n\n     Novo Pedido:");
-                        Console.WriteLine("     ---------------------------------------------------------------------");
+                        Console.WriteLine("\n");
+                        Console.WriteLine("     Novo Pedido:");
+                        Console.WriteLine("     --------------------------------------------------------------------------------");
                         while (true)
                         {
                             Console.Write("     > Digite ID do Produto para inserir (ou '0' para finalizar): ");
@@ -70,13 +69,13 @@ namespace Ecommerce
                                         int inputQty = int.Parse(Console.ReadLine() ?? "1");
                                         order.AddItem(productList[ProductId - 1], inputQty);
                                         Console.WriteLine("      >>> Produto [ {0} ] inserido - {1} unidades", productList[ProductId - 1].Name, inputQty);
-                                        Console.WriteLine("     ---------------------------------------------------------------------\n");
+                                        Console.WriteLine("     --------------------------------------------------------------------------------\n");
                                     }
                                     else
                                     {
-                                        Console.WriteLine("     ---------------------------------------------------------------------");
+                                        Console.WriteLine("     --------------------------------------------------------------------------------");
                                         Console.WriteLine("\n     !!! Digite um número entre 1 e {0}", productList.Count());
-                                        Console.WriteLine("     ---------------------------------------------------------------------\n");
+                                        Console.WriteLine("     --------------------------------------------------------------------------------\n");
                                     }
                                 }
                             }
@@ -107,10 +106,10 @@ namespace Ecommerce
                                     if (inputPayment.ToUpper() == "C") { method = "cartao"; }
                                     if (inputPayment.ToUpper() == "P") { method = "pix"; }
                                     Console.WriteLine($"     Pagamento escolhido: {method.ToUpper()}\n");
-                                    Console.WriteLine("     ---------------------------------------------------------------------");
+                                    Console.WriteLine("     --------------------------------------------------------------------------------");
                                     payment.InvoiceOrder(order, method);
                                     order.ClearOrder();
-                                    Console.WriteLine("     ---------------------------------------------------------------------\n\n");
+                                    Console.WriteLine("     --------------------------------------------------------------------------------\n\n");
                                     break;
                                 }
                                 else
@@ -121,19 +120,24 @@ namespace Ecommerce
                         }
                         else
                         {
-                            Console.WriteLine("      ---------------------------------------------------------------------");
-                            Console.WriteLine("      !!! Pedido não contem itens adicionados!");
-                            Console.WriteLine("      ---------------------------------------------------------------------\n");
+                            Console.WriteLine("     --------------------------------------------------------------------------------");
+                            Console.WriteLine("      !!! Pedido não contem itens para faturar!");
+                            Console.WriteLine("     --------------------------------------------------------------------------------\n");
                         }
                         break;
 
                     case "S":
+                        Console.WriteLine("");
+                        Console.WriteLine("     --------------------------------------------------------------------------------");
                         Console.WriteLine("        [x] Saindo do sistema...");
-                        Console.WriteLine("     ---------------------------------------------------------------------\n");
+                        Console.WriteLine("     --------------------------------------------------------------------------------\n");
                         break;
 
                     default:
-                        Console.WriteLine("       !!! Opção Inválida!\n");
+                        Console.WriteLine("");
+                        Console.WriteLine("     --------------------------------------------------------------------------------");
+                        Console.WriteLine("       !!! Opção Inválida!");
+                        Console.WriteLine("     --------------------------------------------------------------------------------\n");
                         break;
                 }
 

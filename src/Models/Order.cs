@@ -36,21 +36,21 @@ namespace Ecommerce.Models
         public void ShowOrder()
         {
             if (_items.Count > 0) {
-                Console.WriteLine("\n                          | Resumo do Pedido: |");
-                Console.WriteLine("     +=====================================+=======+=================+");
-                Console.WriteLine("     | Nome                                | Qtde. |        Total R$ |");
-                Console.WriteLine("     +=====================================+=======+=================+");
+                Console.WriteLine("\n                                 | Resumo do Pedido: |");
+                Console.WriteLine("     +====================================================+=======+=================+");
+                Console.WriteLine("     | Nome                                               | Qtde. |        Total R$ |");
+                Console.WriteLine("     +====================================================+=======+=================+");
                 foreach (var item in _items)
                 {
-                    Console.WriteLine("     | {0,-35} | {1,5} | {2,15:C} |",item.Product.Name, item.Quantity, item.CalculateSubtotal());
+                    Console.WriteLine("     | {0,-50} | {1,5} | {2,15:C} |",item.Product.Name, item.Quantity, item.CalculateSubtotal());
                 }
-                Console.WriteLine("     +=====================================+=======+=================+");
-                Console.WriteLine("                                    Total do Pedido: {0,15:C}", CalculateTotalOrder());
-                Console.WriteLine("     -----------------------------------------------------------------\n");
+                Console.WriteLine("     +====================================================+=======+=================+");
+                Console.WriteLine("                                                   Total do Pedido: {0,15:C}", CalculateTotalOrder());
+                Console.WriteLine("     --------------------------------------------------------------------------------\n");
             } else {
-                Console.WriteLine("     -----------------------------------------------------------------");
+                Console.WriteLine("     --------------------------------------------------------------------------------");
                 Console.WriteLine("     !!! Pedido sem Itens Cadastrados!");
-                Console.WriteLine("     -----------------------------------------------------------------\n");
+                Console.WriteLine("     --------------------------------------------------------------------------------\n");
             }
         }
         public void ClearOrder() {
